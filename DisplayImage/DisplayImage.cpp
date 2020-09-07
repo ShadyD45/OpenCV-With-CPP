@@ -1,9 +1,3 @@
-// To compile the program use cmake 
-// Create CMakeLists.txt file (Uploaded with every program) for using cmake 
-// Open terminal in the program folder and run following commands
-// cmake .
-// make
-// ./ProgramName <Inputs if needed>
 #include <stdio.h>
 #include<iostream>
 #include <opencv2/opencv.hpp>
