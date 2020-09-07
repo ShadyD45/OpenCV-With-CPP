@@ -1,5 +1,5 @@
 # OpenCV-With-CPP
-  This repository will contain Basic to Advance programs of OpenCV Library version 4.4.0.  
+  This repository will contain Basic to Advance Usage  of OpenCV Library version 4.4.0.  
   All the programs will be implemented in C++.  
   These programs were developed on Linux.  
   For Windows and Mac use Visual Studio (Version >= 15) and configure it for [OpenCV](https://docs.opencv.org/master/d3/d52/tutorial_windows_install.html)  
