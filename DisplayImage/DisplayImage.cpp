@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 
-
 using namespace cv;
 using namespace std;
 
@@ -14,10 +13,9 @@ int main(int argc, char** argv )
         printf("usage: DisplayImage.out <Image_Path>\n");
         return -1;
     }
-   
-    Mat image;
+  
     // Read the image using imread()
-    image = imread( argv[1], 1 );
+    Mat image = imread( argv[1], IMREAD_COLOR);
     
     // Error Handling
     // Checking if the read image has data or not
