@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project( ChangeAndSaveImage )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( ChangeAndSaveImage ChangeAndSaveImage.cpp )
+target_link_libraries( ChangeAndSaveImage ${OpenCV_LIBS} )
