@@ -22,6 +22,7 @@ int main(int argc, char** argv )
         printf("No image data \n");
         return -1;
     }
+    
     namedWindow("Display Image", WINDOW_AUTOSIZE );
     // Show the image
     imshow("Display Image", image);
