@@ -7,7 +7,7 @@
 # Requirements
    - [Install OpenCV 4.4.0](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)  
    - C++ 11 or greater  
-   - Every other dependecies (Cmake, git etc.) will be installed during OpenCV Installation. 
+   - Every other dependency (Cmake, git etc.) will be installed during OpenCV Installation. 
 
 # Program Compilation
   To compile the program use cmake  
