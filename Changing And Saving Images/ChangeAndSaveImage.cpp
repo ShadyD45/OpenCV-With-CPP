@@ -10,8 +10,8 @@ int main(int argc, char** argv )
 		Mat mModified = imread(argv[1], IMREAD_GRAYSCALE); 
 
 		// Create windows for showing Original and Modified images
-		namedWindow("Original Image", WINDOW_AUTOSIZE );
-		namedWindow("Modified Image", WINDOW_AUTOSIZE);
+		namedWindow("Original Image", WINDOW_NORMAL);
+		namedWindow("Modified Image", WINDOW_NORMAL);
 
 		// Show Original and Modified Image on the created windows(Just for comaparison)
 		imshow("Original Image", mOriginal);
