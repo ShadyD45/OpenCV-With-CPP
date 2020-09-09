@@ -93,7 +93,7 @@ int main(int argc, char** argv )
 	cout << endl << "Press 's' to save  reduced image.." << endl;
 	// Wait forever until key press
 	char c = waitKey(0);
-	
+		
 	if(c == 's')
 		imwrite("ReducedImg.jpg", mReducedImage);
 		
