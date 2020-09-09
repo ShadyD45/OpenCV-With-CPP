@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project( CopyingImageMethodOne )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( CopyingImageMethodOne CopyingImageMethodOne.cpp )
+target_link_libraries( CopyingImageMethodOne ${OpenCV_LIBS} )
