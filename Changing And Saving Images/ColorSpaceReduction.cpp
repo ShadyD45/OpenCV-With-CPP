@@ -95,7 +95,9 @@ int main(int argc, char** argv )
 	char c = waitKey(0);
 		
 	if(c == 's')
+	{
+		cout << endl << "Image saved" << endl;
 		imwrite("ReducedImg.jpg", mReducedImage);
-		
+	}
 	return 0;
 }
