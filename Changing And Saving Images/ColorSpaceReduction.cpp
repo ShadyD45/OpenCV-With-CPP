@@ -19,7 +19,7 @@ Mat& ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 	CV_Assert(mImg.depth() == CV_8U);
 
 	int i, j;
-	uchar* p;
+	uchar* p;	
 	
 	int iChannels = mImg.channels();	// Number of color channels in the input image
 	int iRows = mImg.rows;
@@ -47,7 +47,7 @@ Mat& ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 
 int Help()
 {
-	cout << endl << " Usage: ProgramName Image.jpg ReductionValue" << endl;
+	cout << endl << " Program Usage: ProgramName Image.jpg ReductionValue" << endl;
 	exit(1);
 }
 
