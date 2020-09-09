@@ -1,4 +1,4 @@
-// Simple Image Color Space Algorithm
+// Simple Color Space Reduction Algorithm
 // This algorithm is very useful if the some input image has way too many colors which will slow down our program
 // In this alogorithm all we will do is go through each pixel of given image and reduce the color space value
 // This can be done by dividing the current color space value with new value which will result in less colors
