@@ -20,15 +20,16 @@ int Help()
 
 int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 {
+	// Create Mat type of our lookup
 	Mat lookUpTable(1, 256, CV_8U);
 	Mat mReducedImg;
-    uchar* p = lookUpTable.ptr();
+    uchar* p = lookUpTable.ptr();	// Get the pointer to out Mat type lookup
     
     for( int i = 0; i < 256; ++i)
         p[i] = ucLookUp[i];
     
     // Here mImg is the input image and mReducedImg is the output 
-    LUT(mImg, lookUpTable, mReducedImg);		// Using LUT function
+    LUT(mImg, lookUpTable, mReducedImg);			// Using LUT function
 
     if(mReducedImg.empty())
     {
