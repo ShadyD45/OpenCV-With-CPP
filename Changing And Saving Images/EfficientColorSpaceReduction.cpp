@@ -1,7 +1,8 @@
 // Image Color Space Reduction Algorithm
 // This is the most efficient way as per the OpenCV documentation
 // OpenCV encourages us to use the built in functions in the library 
-// instead of implementing them ourselves
+// instead of implementing them ourselves. As they provide good performance
+// Using the LUT Function is the most efficient way
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -23,13 +24,14 @@ int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 	// Create Mat type of our lookup
 	Mat lookUpTable(1, 256, CV_8U);
 	Mat mReducedImg;
-    uchar* p = lookUpTable.ptr();	// Get the pointer to out Mat type lookup
+   
+	uchar* p = lookUpTable.ptr();	// Get the pointer to our Mat type lookup
     
-    for( int i = 0; i < 256; ++i)
+    for(int i = 0; i < 256; ++i)
         p[i] = ucLookUp[i];
     
     // Here mImg is the input image and mReducedImg is the output 
-    LUT(mImg, lookUpTable, mReducedImg);			// Using LUT function
+    LUT(mImg, lookUpTable, mReducedImg);			// Using LUT function to get the reduced image
 
     if(mReducedImg.empty())
     {
@@ -37,7 +39,7 @@ int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 		Help();
     	return 0;
     }	
-    
+
     // There is no use in returning the local variables address
     // So we will just show the reduced image in here
     namedWindow("Reduced Image", WINDOW_NORMAL);
@@ -63,9 +65,6 @@ int main(int argc, char** argv )
         cout << "The image" << argv[1] << " could not be loaded." << endl;
         return -1;
     }
-	
-	// We will create a copy of original image so that later we can compare it with the reduced image
-	Mat mReducedImage = mOriginalImage.clone();
 	
     uchar ucLookUpTable[256];		
     
@@ -99,14 +98,8 @@ int main(int argc, char** argv )
 	// Show the original image for comparison
 	namedWindow("Original Image", WINDOW_NORMAL);
 	imshow("Original Image", mOriginalImage); 
-
 	
-	cout << endl << "Press 's' to save  reduced image.." << endl;
 	// Wait forever until key press
-	char c = waitKey(0);
-	
-	if(c == 's')
-		imwrite("ReducedImg.jpg", mReducedImage);
-	
+	waitKey(0);
 	return 0;
 }
