@@ -43,3 +43,69 @@ int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
     imshow("Reduced Image",mReducedImg);
     return 1;	
 }
+
+
+int main(int argc, char** argv )
+{
+	if (argc < 3)
+    {
+        cout << "Not enough parameters" << endl;
+        Help();
+        return -1;
+    }
+
+	// Reading the original image into a Mat Object
+	Mat mOriginalImage = imread(argv[1], IMREAD_COLOR);
+	
+	if (mOriginalImage.empty())
+    {
+        cout << "The image" << argv[1] << " could not be loaded." << endl;
+        return -1;
+    }
+	
+	// We will create a copy of original image so that later we can compare it with the reduced image
+	Mat mReducedImage = mOriginalImage.clone();
+	
+    uchar ucLookUpTable[256];		
+    
+    int iReductionExtent = 0; 		// The integer value passed as command line argument
+    stringstream s;
+    
+    // Convert the string input to number 
+    s << argv[2];
+    s >> iReductionExtent;
+	if(!s || !iReductionExtent)
+	{
+		cout << "Invalid value for color space reduction" << endl;
+		Help();
+		return -1;
+	}
+	
+	// Let's put values in our Lookup table;
+	for(int i = 0; i < 256; ++i)
+	{
+		ucLookUpTable[i] = (uchar)(iReductionExtent * (i / iReductionExtent));
+	}
+	
+	int iVal = ReduceImageColorSpace(mReducedImage, ucLookUpTable);		// Calling our reduction function
+	
+	if(!iVal)
+	{
+		cout << "Image redution failed" << endl;
+		return -1;
+	}
+	
+	// Show the original image for comparison
+	namedWindow("Original Image", WINDOW_NORMAL);
+	imshow("Original Image", mOriginalImage); 
+
+	
+	cout << endl << "Press 's' to save  reduced image.." << endl;
+	// Wait forever until key press
+	char c = waitKey(0);
+	
+	if(c == 's')
+		imwrite("ReducedImg.jpg", mReducedImage);
+	
+	return 0;
+}
