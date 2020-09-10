@@ -27,53 +27,53 @@ int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
    
 	uchar* p = lookUpTable.ptr();	// Get the pointer to our Mat type lookup
     
-    for(int i = 0; i < 256; ++i)
-        p[i] = ucLookUp[i];
+    	for(int i = 0; i < 256; ++i)
+        	p[i] = ucLookUp[i];
     
-    // Here mImg is the input image and mReducedImg is the output 
-    LUT(mImg, lookUpTable, mReducedImg);			// Using LUT function to get the reduced image
+    	// Here mImg is the input image and mReducedImg is the output 
+    	LUT(mImg, lookUpTable, mReducedImg);			// Using LUT function to get the reduced image
 
-    if(mReducedImg.empty())
-    {
-    	cout << "Something went wrong.." << endl;
-		Help();
-    	return 0;
-    }	
+    	if(mReducedImg.empty())
+    	{
+    		cout << "Something went wrong.." << endl;
+			Help();
+    		return 0;
+    	}	
 
-    // There is no use in returning the local variables address
-    // So we will just show the reduced image in here
-    namedWindow("Reduced Image", WINDOW_NORMAL);
-    imshow("Reduced Image",mReducedImg);
-    return 1;	
+    	// There is no use in returning the local variables address
+    	// So we will just show the reduced image in here
+    	namedWindow("Reduced Image", WINDOW_NORMAL);
+    	imshow("Reduced Image",mReducedImg);
+    	return 1;	
 }
 
 
 int main(int argc, char** argv )
 {
 	if (argc < 3)
-    {
-        cout << "Not enough parameters" << endl;
-        Help();
-        return -1;
-    }
+    	{
+        	cout << "Not enough parameters" << endl;
+        	Help();
+        	return -1;
+    	}
 
 	// Reading the original image into a Mat Object
 	Mat mOriginalImage = imread(argv[1], IMREAD_COLOR);
 	
 	if (mOriginalImage.empty())
-    {
-        cout << "The image" << argv[1] << " could not be loaded." << endl;
-        return -1;
-    }
+    	{
+        	cout << "The image" << argv[1] << " could not be loaded." << endl;
+        	return -1;
+    	}
 	
-    uchar ucLookUpTable[256];		
+    	uchar ucLookUpTable[256];		
     
-    int iReductionExtent = 0; 		// The integer value passed as command line argument
-    stringstream s;
+    	int iReductionExtent = 0; 		// The integer value passed as command line argument
+    	stringstream s;
     
-    // Convert the string input to number 
-    s << argv[2];
-    s >> iReductionExtent;
+    	// Convert the string input to number 
+    	s << argv[2];
+    	s >> iReductionExtent;
 	if(!s || !iReductionExtent)
 	{
 		cout << "Invalid value for color space reduction" << endl;
