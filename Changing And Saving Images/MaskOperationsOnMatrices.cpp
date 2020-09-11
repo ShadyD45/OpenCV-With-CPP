@@ -4,7 +4,7 @@
 // neighbouring pixels and the current pixel will have on the new pixel value.
 // The OpenCV Documentation has implementation of applying mask on a matrix ourselves
 // but this program will demonstrate the usage of built in filter2D() function
-// which is actually very fast instead of the one we implement ourselves. 
+// which is actually very fast compared to the one we implement ourselves. 
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc/hal/hal.hpp>
