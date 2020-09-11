@@ -7,10 +7,11 @@
 // which is actually very fast instead of the one we implement ourselves. 
 
 #include <opencv2/core.hpp>
+#include <opencv2/imgproc/hal/hal.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 #include <iostream>
-#include <sstream>
 
 using namespace cv;
 using namespace std;
@@ -21,7 +22,7 @@ int Help()
 	exit(1);
 }
 
-int main(int argc, char* argv)
+int main(int argc, char** argv)
 {
 	if(argc < 2)
 	{
@@ -33,7 +34,7 @@ int main(int argc, char* argv)
 	// Reading the original image into a Mat Object
 	Mat mOriginalImage = imread(argv[1], IMREAD_COLOR);
 	
-	// This will be our output image
+	// This will be our output image after masking
 	Mat mAfterMasking;	
 	
 	if(mOriginalImage.empty())
@@ -49,6 +50,11 @@ int main(int argc, char* argv)
                          	
 	filter2D(mOriginalImage, mAfterMasking, mOriginalImage.depth(), mMask)
 
-
+	namedWindow("Original Image", WINDOW_NORMAL);
+	namedWindow("After Masking Image", WINDOW_NORMAL);
+	
+	imshow("Original Image", mOriginalImage);
+	imshow("After Masking Image", mAfterMasking);
+	
 	return 0;
 }
