@@ -21,6 +21,9 @@ int Help()
 
 int ReduceImageColorSpace(Mat& mImg, const uchar* const ucLookUp)
 {
+	// Accept only char type matrices
+    	CV_Assert(mImg.depth() == CV_8U);
+	
 	// Create Mat type of our lookup
 	Mat lookUpTable(1, 256, CV_8U);
 	Mat mReducedImg;
