@@ -56,5 +56,15 @@ int main(int argc, char** argv)
 	imshow("Original Image", mOriginalImage);
 	imshow("After Masking Image", mAfterMasking);
 	
+	// Wait forever until key press
+	cout << "Press 's' to save masked image" << endl;
+	char c = waitKey(0);
+		
+	if(c == 's')
+	{
+		imwrite("MaskedImg.jpg", mAfterMasking);
+		cout << endl << "Image saved" << endl;
+	}
+	
 	return 0;
 }
