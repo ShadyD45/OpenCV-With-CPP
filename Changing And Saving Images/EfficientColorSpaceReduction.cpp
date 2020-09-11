@@ -87,7 +87,7 @@ int main(int argc, char** argv )
 		ucLookUpTable[i] = (uchar)(iReductionExtent * (i / iReductionExtent));
 	}
 	
-	int iVal = ReduceImageColorSpace(mReducedImage, ucLookUpTable);		// Calling our reduction function
+	int iVal = ReduceImageColorSpace(mOriginalImage, ucLookUpTable);		// Calling our reduction function
 	
 	if(!iVal)
 	{
