@@ -10,7 +10,7 @@
    - Every other dependency (Cmake, git etc.) will be installed during OpenCV Installation. 
 
 # Build and Run
-  - To compile the program use [CMake](https://cmake.org/cmake/help/v3.18/) (The Basic cmake file format is uploaded along with programs)
+  - To compile the program use [CMake](https://cmake.org/cmake/help/v3.18/) (The Basic cmake file to compile a cpp program is used. Google it!)
   - Create CMakeLists.txt file (Uploaded with every program) for using cmake  
   - Open terminal in the program folder and run following commands:  
   ```
