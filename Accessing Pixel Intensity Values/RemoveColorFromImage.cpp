@@ -16,7 +16,7 @@ using namespace std;
 int Help()
 {
 	cout << endl << " Usage: ./ProgramName ImageName [ ColorChannel ]" << endl;
-	cout << endl << " The ColorChannel parameter is optional. If not provided any Color Channel will be selected"
+	cout << endl << " The ColorChannel parameter is optional. If not provided any Color Channel will be selected " << endl;
 	cout << endl << " ImageName : Image.jpg \nColorChannel : 0 or 1 or 2 for Blue or Green or Red resp." << endl;
 	exit(1);
 }
@@ -32,12 +32,15 @@ int main(int argc, char** argv)
 	}
 	else if(argc == 2)
 	{
+		cout << "Selecting a random color channel.." << endl;
 		srand((unsigned) time(0));
-		iColorChannel =  0 + (rand() % 2);
+		iColorChannel =  0 + (rand() % 2);		
 	}
 	else
 	{
-		iColorChannel = argv[2];
+		// Convert the string input to number 
+		s << argv[2];
+		s >> iColorChannel;
 	}
 
 	// Read the original image 
@@ -50,10 +53,11 @@ int main(int argc, char** argv)
 	{
 		for(int col = 0; col < mModified.cols; ++col)
 		{
-			/*  
-			 Uncomment this For GrayScale Images as they only have a single channel
-				mModified.at<uchar>(row, col) = mModified.at<uchar>(row, col) * 0.5f;
+			/*  	Uncomment this For GrayScale Images as they only have a single channel
+				
+					mModified.at<uchar>(row, col) = mModified.at<uchar>(row, col) * 0.5f;
 			*/
+			
 			// For Color images its somewhat different as they have	3 color channels BGR (Blue Green Red)
 			mModified.at<Vec3b>(row, col)[iColorChannel] =  mModified.at<Vec3b>(row, col)[iColorChannel] * 0;		
 		}
@@ -71,7 +75,7 @@ int main(int argc, char** argv)
 		
 	if(c == 's')
 	{
-		imwrite("Intensity.jpg", mModified);
+		imwrite("intensityImg.jpg", mModified);
 		cout << endl << "Image saved" << endl;
 	}
 	
