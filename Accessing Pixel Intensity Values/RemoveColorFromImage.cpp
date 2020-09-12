@@ -6,8 +6,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-#include <cstdlib>
 #include <iostream>
+#include <sstream>
 #include <ctime>
 
 using namespace cv;
@@ -16,7 +16,7 @@ using namespace std;
 int Help()
 {
 	cout << endl << " Usage: ./ProgramName ImageName [ ColorChannel ]" << endl;
-	cout << endl << " The ColorChannel parameter is optional. If not provided any Color Channel will be selected " << endl;
+	cout << endl << " The ColorChannel parameter is optional. If not provided any Color Channel will be selected." << endl;
 	cout << endl << " ImageName : Image.jpg \nColorChannel : 0 or 1 or 2 for Blue or Green or Red resp." << endl;
 	exit(1);
 }
@@ -24,6 +24,7 @@ int Help()
 int main(int argc, char** argv)
 {
 	int iColorChannel;
+	stringstream s;
 	if(argc < 2)
 	{
 		cout << "Too few arguments" << endl;
@@ -33,14 +34,29 @@ int main(int argc, char** argv)
 	else if(argc == 2)
 	{
 		cout << "Selecting a random color channel.." << endl;
-		srand((unsigned) time(0));
-		iColorChannel =  0 + (rand() % 2);		
+		
+		// Select a Random color channel between from BGR (Blue:0, Green:1, Red:2 )
+		srand((unsigned) time(NULL));	
+		iColorChannel =  (rand() % 3);	
+		
+		cout << "Removing " ;
+		switch(iColorChannel)
+		{
+			case 0: cout << "Blue Channel.." << endl;	
+				break;
+			case 1: cout << "Green Channel.." << endl;	
+				break;
+			case 2: cout << "Red Channel.." << endl;	
+				break;	
+			default : cout << "Something went wrong" << endl;	
+				  Help();
+		}		
 	}
 	else
 	{
 		// Convert the string input to number 
 		s << argv[2];
-		s >> iColorChannel;
+		s >> iColorChannel;	// The color channel passed by the user
 	}
 
 	// Read the original image 
@@ -53,9 +69,10 @@ int main(int argc, char** argv)
 	{
 		for(int col = 0; col < mModified.cols; ++col)
 		{
-			/*  	Uncomment this For GrayScale Images as they only have a single channel
-				
-					mModified.at<uchar>(row, col) = mModified.at<uchar>(row, col) * 0.5f;
+			/*  	
+				Uncomment this block For GrayScale Images as they only have a single channel
+			
+				mModified.at<uchar>(row, col) = mModified.at<uchar>(row, col) * 0.5f;
 			*/
 			
 			// For Color images its somewhat different as they have	3 color channels BGR (Blue Green Red)
@@ -66,6 +83,7 @@ int main(int argc, char** argv)
 	namedWindow("Original Image", WINDOW_NORMAL);
 	namedWindow("Intensity changed", WINDOW_NORMAL);
 	
+	// Show both images for comparison
 	imshow("Original Image", mOriginal);
 	imshow("Intensity changed", mModified);
 	
