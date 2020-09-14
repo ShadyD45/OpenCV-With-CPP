@@ -22,11 +22,39 @@ int main(int argc, char** argv)
 		cout << "Usage: " << argv[0] << " <Input image>" << endl;
 		exit(1);
 	}
+
+    cout << "Enter the alpha value [1.0-3.0]: "; 
+    cin >> alpha;
+    cout << "Enter the beta value [0-100]: ";    
+    cin >> beta;
 	
-	
-	for(int )
+	//Iterate over each channel in each pixel of an image
+	for(int row = 0; x < mOriginal.rows(); ++row)
 	{
-		
+		for(int col = 0; y < mOriginal.cols(); ++col)
+		{
+			for(int channel = 0; c < mOriginal.channels(); ++channel)
+			{
+				mModified.at<Vec3b>(row,col)[channel] = saturate_cost<uchar>( alpha * mOriginal.at<Vec3b>(row,col)[channel] + beta ); 
+			}
+		}
+	}
+	
+	namedWindow("Original Image", WINDOW_NORMAL);
+	namedWindow("Modified Image", WINDOW_NORMAL);
+	
+	moveWindow("Original Image", 10, 50);
+	moveWindow("Modified Image", 60, 110);
+	
+	imshow("Original Image", mOriginal);
+	imshow("Modified Image", mModified);
+	// Wait forever until key press
+	char c = waitKey(0);
+	cout << "Press 's' to save changed image.." endl;
+	if(c == 's')
+	{
+		imwrite("modifiedImg.jpg", mModified);
+		cout<< "Image Saved.." << endl;
 	}
 	return 0;
 }
