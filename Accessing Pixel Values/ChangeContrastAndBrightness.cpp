@@ -43,8 +43,8 @@ int main(int argc, char** argv)
 	namedWindow("Original Image", WINDOW_NORMAL);
 	namedWindow("Modified Image", WINDOW_NORMAL);
 	
-	moveWindow("Original Image", 10, 50);
-	moveWindow("Modified Image", 60, 110);
+	moveWindow("Original Image", 10, 50);		// Place the output window at given co-ordinates
+	moveWindow("Modified Image", 180, 250);		// Place the output window at given co-ordinates
 	
 	imshow("Original Image", mOriginal);
 	imshow("Modified Image", mModified);
