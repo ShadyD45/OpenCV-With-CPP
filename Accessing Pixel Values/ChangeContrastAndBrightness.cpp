@@ -23,13 +23,13 @@ int main(int argc, char** argv)
 		exit(1);
 	}
 
-    cout << "Enter the alpha value [1.0-3.0]: "; 
-    cin >> alpha;
-    cout << "Enter the beta value [0-100]: ";    
-    cin >> beta;
+        cout << "Enter the alpha value [1.0-3.0]: "; 
+        cin >> alpha;
+        cout << "Enter the beta value [0-100]: ";    
+        cin >> beta;
 	
 	//Iterate over each channel in each pixel of an image
-	/*for(int row = 0; row < mOriginal.rows; ++row)			// Comment out this code if using convertTo() function
+	for(int row = 0; row < mOriginal.rows; ++row)			// Comment out this code if using convertTo() function
 	{
 		for(int col = 0; col < mOriginal.cols; ++col)
 		{
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 				mModified.at<Vec3b>(row,col)[channel] = saturate_cast<uchar>( alpha * mOriginal.at<Vec3b>(row,col)[channel] + beta ); 
 			}
 		}
-	}*/
+	}
 	
 	// Instead of using for loops, a more Efficient way is to use the  convertTo() 
 	// Uncomment the below code to see how the function works 
