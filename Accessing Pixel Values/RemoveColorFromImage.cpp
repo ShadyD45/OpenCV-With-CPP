@@ -29,7 +29,6 @@ int main(int argc, char** argv)
 	{
 		cout << "Wrong number of arguments" << endl;
 		Help();
-		return -1;
 	}
 	else if(argc == 2)
 	{
