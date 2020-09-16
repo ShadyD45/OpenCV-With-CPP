@@ -1,4 +1,4 @@
-#include <opencv2/imgcodec.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <iostream>
 
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     cin >> beta;
 	
 	//Iterate over each channel in each pixel of an image
-	for(int row = 0; row < mOriginal.rows; ++row)			// Comment out the for loops for using convertTo() function
+	/*for(int row = 0; row < mOriginal.rows; ++row)			// Comment out this code if using convertTo() function
 	{
 		for(int col = 0; col < mOriginal.cols; ++col)
 		{
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 				mModified.at<Vec3b>(row,col)[channel] = saturate_cast<uchar>( alpha * mOriginal.at<Vec3b>(row,col)[channel] + beta ); 
 			}
 		}
-	}
+	}*/
 	
 	// Instead of using for loops, a more Efficient way is to use the  convertTo() 
 	// Uncomment the below code to see how the function works 
@@ -47,17 +47,15 @@ int main(int argc, char** argv)
 	namedWindow("Original Image", WINDOW_NORMAL);
 	namedWindow("Modified Image", WINDOW_NORMAL);
 	
-	moveWindow("Original Image", 10, 50);		// Place the output window at given co-ordinates
-	moveWindow("Modified Image", 180, 250);		// Place the output window at given co-ordinates
-	
+	moveWindow("Original Image", 10, 50);
+	moveWindow("Modified Image", 180, 250);
 	
 	imshow("Original Image", mOriginal);
 	imshow("Modified Image", mModified);
 	
-	
-	cout << "Press 's' to save changed image.." endl;
+	cout << "Press 's' to save changed image.." << endl;
 	// Wait forever until key press
-	char c = waitKey(0);
+	char c = waitKey(0);	
 	if(c == 's')
 	{
 		imwrite("modifiedImg.jpg", mModified);
