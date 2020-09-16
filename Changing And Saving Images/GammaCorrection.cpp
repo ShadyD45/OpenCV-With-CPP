@@ -1,13 +1,19 @@
+// Gamma correction can be used to correct brightness of an image
+// By using non-linear transformation between the input valuesand the mapped output values
+
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <iostream>
 #include <sstream>
+
 using namespace cv;
 using namespace std;
 
 void Help()
 {
 	cout << endl << " Usage: ProgramName Image.jpg GammaCorrectionValue" << endl;
+	cout << endl << " Tip: Try using image with high amount of brightness to see the change after correction.";
+	cout << " Use images similar to BrightnessTest.jpg which doesn't have right amount of brightness" << endl;
 	exit(1);
 }
 
