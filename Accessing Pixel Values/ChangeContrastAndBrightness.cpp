@@ -29,16 +29,20 @@ int main(int argc, char** argv)
     cin >> beta;
 	
 	//Iterate over each channel in each pixel of an image
-	for(int row = 0; x < mOriginal.rows(); ++row)
+	for(int row = 0; row < mOriginal.rows; ++row)			// Comment out the for loops for using convertTo() function
 	{
-		for(int col = 0; y < mOriginal.cols(); ++col)
+		for(int col = 0; col < mOriginal.cols; ++col)
 		{
-			for(int channel = 0; c < mOriginal.channels(); ++channel)
+			for(int channel = 0; channel < mOriginal.channels(); ++channel)
 			{
-				mModified.at<Vec3b>(row,col)[channel] = saturate_cost<uchar>( alpha * mOriginal.at<Vec3b>(row,col)[channel] + beta ); 
+				mModified.at<Vec3b>(row,col)[channel] = saturate_cast<uchar>( alpha * mOriginal.at<Vec3b>(row,col)[channel] + beta ); 
 			}
 		}
 	}
+	
+	// Instead of using for loops, a more Efficient way is to use the  convertTo() 
+	// Uncomment the below code to see how the function works 
+	// mOriginal.convertTo(mModified, -1, alpha, beta);
 	
 	namedWindow("Original Image", WINDOW_NORMAL);
 	namedWindow("Modified Image", WINDOW_NORMAL);
