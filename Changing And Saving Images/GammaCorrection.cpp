@@ -61,8 +61,6 @@ int main(int argc, char** argv)
 	GammaCorrection(mOriginal, gamma);
 	
 	namedWindow("Original Image", WINDOW_NORMAL);
-		
-	moveWindow("Original Image", 10, 50);			// Place the output window at given co-ordinates	
 	
 	imshow("Original Image", mOriginal);	
 	// wait forever until key press	
